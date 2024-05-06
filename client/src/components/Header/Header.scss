@@ -6,16 +6,26 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem;
+    border-bottom: 1px solid $accent;
+
+    @include tablet {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
 
     &__logo {
         display: flex;
-        gap: 1rem;
+        align-items: center;
+        gap: .25rem;
     }
     &__nav {
         display: flex;
         align-items: center;
         gap: 1rem;
     }
+        &__image {
+            height: 2.25rem;
+        }
         &__title {
             color: $text1;
         }

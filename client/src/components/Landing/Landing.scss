@@ -1,0 +1,39 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    &__title {
+        font-size: 2rem;
+    }
+    &__buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+
+        @include tablet {
+            justify-content: flex-start;
+        }
+    }
+        &__button {
+            background-color: $primary2;
+            color: $text1;
+            border: none;
+            border-radius: 5px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        &__button--white {
+            background-color: $text1;
+            color: $primary;
+            border: 1px solid $bg2;
+        }
+}

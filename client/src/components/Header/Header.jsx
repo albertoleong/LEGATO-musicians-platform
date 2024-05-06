@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
 import './Header.scss'
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
+import logo from '../../assets/icons/logo1.png'
 
 const Header =() => {
     return (
         <section className='header'>
-            <div className='header__logo'>
-                <img className='header_image' alt='logo'/>
-                <h1 className='header__title'>Legato</h1>
-            </div>
+            <Link className='header__logo' to='./'>
+                <img src={logo} className='header__image' alt='logo'/>
+                <h2 className='header__title'>Legato</h2>
+            </Link>
             <div className='header__nav'>
                 <Link className='header__link'>
                     <button className='header__button'>Sign Up</button>
