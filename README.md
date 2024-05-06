@@ -1,10 +1,10 @@
 # Project Title
 
-Gig Grid --- (not sold on this yet, placeholder for now)
+Legato
 
 ## Overview
 
-Gig Grid is an app that simplifies the process of finding talented musicians and bands for your next event. Whether you're hosting a wedding, organizing a corporate event, or managing a venue, Gig Grid makes it easy to discover the perfect musical act to elevate your occasion.
+Legato is an app that simplifies the process of finding talented musicians and bands for your next event. Whether you're hosting a wedding, organizing a corporate event, or managing a venue, Gig Grid makes it easy to discover the perfect musical act to elevate your occasion.
 
 ### Problem
 
