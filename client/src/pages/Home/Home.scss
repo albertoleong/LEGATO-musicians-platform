@@ -1,0 +1,8 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.home {
+    background-color: $background;
+    display: flex;
+    flex-direction: column;
+}

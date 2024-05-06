@@ -1,0 +1,27 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.header {
+    background-color: $bg2;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+
+    &__logo {
+        display: flex;
+        gap: 1rem;
+    }
+    &__nav {
+        display: flex;
+    }
+        &__title {
+            color: $text1;
+        }
+        &__button {
+            background-color: $red;
+            color: $text1;
+            border: none;
+            border-radius: 5px;
+            height: 2rem;
+        }
+}
