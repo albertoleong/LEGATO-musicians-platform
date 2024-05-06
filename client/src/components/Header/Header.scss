@@ -13,6 +13,8 @@
     }
     &__nav {
         display: flex;
+        align-items: center;
+        gap: 1rem;
     }
         &__title {
             color: $text1;
@@ -20,8 +22,10 @@
         &__button {
             background-color: $red;
             color: $text1;
+            font-weight: 600;
             border: none;
             border-radius: 5px;
-            height: 2rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
 }
