@@ -9,7 +9,7 @@ const Landing = () => {
                 <h1 className='landing__title'>Find the perfect artist for your next event</h1>
                 <p className='landing__par'>Legato is your go-to platform for finding and booking talented musicians and artists for any occasion.</p>
                 <div className='landing__buttons'>
-                    <Link className='landing__link'>
+                    <Link className='landing__link' to={'/booking'}>
                         <button className='landing__button'>Start Booking</button>
                     </Link>
                     <Link className='landing__link'>

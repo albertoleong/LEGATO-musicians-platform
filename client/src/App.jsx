@@ -4,6 +4,7 @@ import './App.scss';
 import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import Booking from './pages/Booking/Booking';
 
 
 function App() {
@@ -14,8 +15,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        {/* <Route path='/artists/:artistId' element={<Home />} /> */}
-        {/* <Route path='/upload' element={<UploadPage />} /> */}
+        <Route path='/booking' element={<Booking />} />
       </Routes>
       <Footer />
     </BrowserRouter>

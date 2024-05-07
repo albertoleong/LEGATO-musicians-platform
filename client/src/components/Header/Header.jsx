@@ -1,9 +1,12 @@
-import { Link } from 'react-router-dom'
-import './Header.scss'
-import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
-import logo from '../../assets/icons/logo1.png'
+// Header.js
+import { Link } from 'react-router-dom';
+import './Header.scss';
+import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
+import logo from '../../assets/icons/logo1.png';
 
-const Header =() => {
+
+const Header = () => {
+   
     return (
         <section className='header'>
             <Link className='header__logo' to='./'>
@@ -11,13 +14,13 @@ const Header =() => {
                 <h2 className='header__title'>Legato</h2>
             </Link>
             <div className='header__nav'>
-                <Link className='header__link'>
+                <div className='header__link'>
                     <button className='header__button'>Sign Up</button>
-                </Link>
+                </div>
                 <HamburgerMenu />
             </div>
         </section>
-    )
+    );
 }
 
-export default Header
+export default Header;

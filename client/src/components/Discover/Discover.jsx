@@ -2,8 +2,27 @@ import './Discover.scss'
 import pianoGirl from '../../assets/images/piano-girl.jpg'
 import check from '../../assets/icons/check.png'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import ModalSignUp from '../ModalSignUp/ModalSignUp'
 
 const Discover = () => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleOptionSelection = (option) => {
+        console.log("Selected option:", option);
+        closeModal();
+    };
+
+
     return (
         <section className='discover'>
             <img src={pianoGirl} className='discover__image--2' alt='girl playing the piano'/>
@@ -43,8 +62,15 @@ const Discover = () => {
                     Legato's diverse selection of musicians will suit your preferences." - Hannah J
             </p>
             <Link className='discover__link'>
-                <button className='discover__button'>Sign Up Today!</button>
+                <button onClick={openModal}  className='discover__button'>Sign Up Today!</button>
             </Link>
+            {isModalOpen && (
+                <ModalSignUp
+                    isOpen={isModalOpen}
+                    closeModal={closeModal}
+                    handleOptionSelection={handleOptionSelection}
+                />
+            )}
         </section>
     )
 }

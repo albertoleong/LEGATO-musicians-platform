@@ -9,8 +9,7 @@ const Footer = () => {
             <h2 className='footer__title'>Legato</h2>
         </div>
         <div className="footer__social-links">
-          {/* Add your social media icons/links here */}
-          {/* Example: */}
+          {/* Add social media icons/links here */}
           <a href="https://www.facebook.com"><i className="fab fa-facebook"></i></a>
           <a href="https://www.twitter.com"><i className="fab fa-twitter"></i></a>
           <a href="https://www.instagram.com"><i className="fab fa-instagram"></i></a>
