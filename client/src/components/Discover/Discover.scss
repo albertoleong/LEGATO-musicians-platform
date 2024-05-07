@@ -1,0 +1,115 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.discover {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: $primary2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include tablet {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        flex-direction: row;
+    }
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        justify-content: space-evenly;
+    }
+    &__square {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    }
+        &__miniContainer {
+            display: flex;
+            gap: .5rem;
+        }
+        &__titles {
+            color: $text1;
+            font-weight: 600;
+        }
+        &__p {
+            text-align: center;
+            color: $text-main;
+        }
+        &__par {
+            display: none;
+            color: $text1;
+            text-align: center;
+            @include tablet {
+                display: flex;
+            }
+            @include desktop {
+                width: 70%;
+                align-self: center;
+            }
+        }
+        &__par--bottom {
+            display: flex;
+            @include tablet {
+                display: none;
+            }
+        }
+
+    &__image {
+        width: 70%;
+        border-radius: 10px;
+        align-self: center;
+        @include tablet {
+            width: 50%;
+        }
+        @include desktop {
+            width: 0%;
+        }
+    }
+    &__image--2 {
+        display: none;
+        width: 70%;
+        border-radius: 10px;
+        align-self: center;
+        @include desktop {
+            display: flex;
+            width: 45%;
+        }
+    }
+    &__link {
+        align-self: center;
+        display: flex;
+        text-decoration: none;
+        @include tablet {
+            display: none;
+        }
+    }
+    &__link--tablet {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            text-decoration: none;
+            align-self: center;
+        }
+    }
+
+    &__button {
+        background-color: $red;
+        color: $text1;
+        font-weight: 600;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 5px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: .25rem;
+        padding-top: .25rem;
+    }
+}

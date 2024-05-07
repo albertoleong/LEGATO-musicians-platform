@@ -16,10 +16,10 @@ const HamburgerMenu = () => {
         <div className="bar3"></div>
       </div>
       <ul className={`menu ${isOpen ? 'open' : ''}`}>
-        <li>About</li>
-        <li>Log in</li>
-        <li>FAQ</li>
-        <li>Contact Us</li>
+        <li className='menu__item'>About</li>
+        <li className='menu__item'>Log in</li>
+        <li className='menu__item'>FAQ</li>
+        <li className='menu__item'>Contact Us</li>
       </ul>
     </div>
   );

@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 24px;
+  height: 20px;
 }
 
 .bar1, .bar2, .bar3 {
@@ -17,6 +17,7 @@
 }
 
 .menu {
+  display: none;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -34,9 +35,19 @@
 }
 
 .menu.open {
+  display: flex;
+  flex-direction: column;
   transform: translateX(0%);
   opacity: 1; /* Show the menu items */
   pointer-events: auto; /* Enable pointer events when menu is open */
-  padding: 1rem;
+  padding: .5rem;
   color: $text1;
+}
+
+.menu__item {
+  padding-bottom: .25rem;
+}
+.menu__item:hover {
+  background-color: $bg3;
+  cursor: pointer;
 }

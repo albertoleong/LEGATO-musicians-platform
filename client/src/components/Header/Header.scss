@@ -17,6 +17,7 @@
         display: flex;
         align-items: center;
         gap: .25rem;
+        text-decoration: none;
     }
     &__nav {
         display: flex;
@@ -24,10 +25,11 @@
         gap: 1rem;
     }
         &__image {
-            height: 2.25rem;
+            height: 2.125rem;
         }
         &__title {
             color: $text1;
+            font-weight: 600;
         }
         &__button {
             background-color: $red;
@@ -37,5 +39,7 @@
             border-radius: 5px;
             padding-left: 1rem;
             padding-right: 1rem;
+            padding-bottom: .25rem;
+            padding-top: .25rem;
         }
 }
