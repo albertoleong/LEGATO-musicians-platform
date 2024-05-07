@@ -30,8 +30,8 @@ const Discover = () => {
                     <p className='discover__p'>Seamlessly communicate with your artist through the Legato platform.</p>
                 </article>
                 <p className='discover__par'>
-                    Whether you're planning a wedding, corporate event, or private party, 
-                    our diverse selection of musicians will suit your preferences.
+                    "Whether you're planning a wedding, corporate event, or private party, 
+                    Legato's diverse selection of musicians will suit your preferences." - Hannah J
                 </p>
                 <Link className='discover__link--tablet'>
                 <button className='discover__button'>Sign Up Today!</button>
@@ -39,8 +39,8 @@ const Discover = () => {
             </div>
             <img src={pianoGirl} className='discover__image' alt='girl playing the piano'/>
             <p className='discover__par discover__par--bottom'>
-                    Whether you're planning a wedding, corporate event, or private party, 
-                    our diverse selection of musicians will suit your preferences.
+                    "Whether you're planning a wedding, corporate event, or private party, 
+                    Legato's diverse selection of musicians will suit your preferences." - Hannah J
             </p>
             <Link className='discover__link'>
                 <button className='discover__button'>Sign Up Today!</button>
