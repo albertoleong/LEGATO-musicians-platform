@@ -33,9 +33,13 @@ const ArtistBooking = ({ artistId }) => {
 
     return (
         <section className='profile'>
-            <img alt='artist photo' className='profile__image'/>
+            <img alt='artist performing' className='profile__image'/>
             <div className='profile__container'>
                 <h2 className='profile__name'>{selectedArtist.name}</h2>
+                <p className='profile__description'>{selectedArtist.description}</p>
+            </div>
+            <div className='profile__contact'>
+                <p className='profile__email'>{selectedArtist.email}</p>
             </div>
         </section>
     )

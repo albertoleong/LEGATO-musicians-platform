@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 const BookingGrid = () => {
     const [artistsList, setArtistsList] = useState([])
     const [filter, setFilter] = useState('')
+    const [locationFilter, setLocationFilter] = useState('') // New state for location filter
     const API_URL = "http://localhost:8080/"
 
     useEffect(() => {
@@ -24,25 +25,37 @@ const BookingGrid = () => {
         setFilter(event.target.value)
     }
 
+    const handleLocationChange = (event) => { 
+        setLocationFilter(event.target.value)
+    }
+
     const filteredArtists = artistsList.filter(artist => {
-        return artist.type.toLowerCase().includes(filter.toLowerCase()) || 
-               artist.music_styles.toLowerCase().includes(filter.toLowerCase())
+        return (artist.type.toLowerCase().includes(filter.toLowerCase()) || 
+               artist.music_styles.toLowerCase().includes(filter.toLowerCase())) &&
+               (locationFilter === '' || artist.location === locationFilter) 
     })
 
     return (
         <section className='grid'>
-            <input 
-                className='grid__input'
-                type="text" 
-                placeholder="Filter by type or music genre" 
-                value={filter} 
-                onChange={handleFilterChange} 
-            />
+            <div className='grid__filter'>
+                <input 
+                    className='grid__input'
+                    type="text" 
+                    placeholder="Search by music genre" 
+                    value={filter} 
+                    onChange={handleFilterChange} 
+                />
+                <select className='grid__input grid__input--location' onChange={handleLocationChange}>
+                    <option value="">All Locations</option>
+                    <option value="Columbus, OH">Columbus, OH</option>
+                    <option value="New York City, NY">New York City, NY</option>
+                </select>
+            </div>
             <ul className='grid__list'>
                 {filteredArtists.map((artist) => {
                     return (
-                        <Link to={`/booking/${artist.id}`}  className='grid__link'>
-                            <li className='grid__item' key={artist.id}>
+                        <Link to={`/booking/${artist.id}`}  className='grid__link' key={artist.id}>
+                            <li className='grid__item'>
                                 <div className='grid__div'>
                                     <h2 className='grid__name'>{artist.name}</h2>
                                     <p className='grid__par'>{artist.type}</p>

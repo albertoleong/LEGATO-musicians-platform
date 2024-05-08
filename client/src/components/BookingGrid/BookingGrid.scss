@@ -8,16 +8,23 @@
     padding: 1rem;
     gap: 1rem;
 
-    &__link {
-        text-decoration: none;
+    &__filter {
+        display: flex;
+        justify-content: space-between;
     }
-
     &__input {
         border-radius: 10px;
         border: none;
         padding: .5rem;
         background-color: $primary;
         outline-color: $bg2;
+        color: $text1;
+       
+    }
+    &__input--location {
+        background-color: $text1;
+        color: $text-main;
+       
     }
     &__input::placeholder {
         color: $text1;
@@ -27,6 +34,9 @@
         flex-direction: column;
         gap: 1rem;
         padding: 0;
+    }
+    &__link {
+        text-decoration: none;
     }
         &__item {
             display: flex;
