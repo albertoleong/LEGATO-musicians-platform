@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const BookingGrid = () => {
     const [artistsList, setArtistsList] = useState([])
     const [filter, setFilter] = useState('')
-    const [locationFilter, setLocationFilter] = useState('') // New state for location filter
+    const [locationFilter, setLocationFilter] = useState('')
     const API_URL = "http://localhost:8080/"
 
     useEffect(() => {
@@ -28,6 +28,10 @@ const BookingGrid = () => {
     const handleLocationChange = (event) => { 
         setLocationFilter(event.target.value)
     }
+
+    const handleClick = (event) => {
+        window.scrollTo(0, 0);
+    };
 
     const filteredArtists = artistsList.filter(artist => {
         return (artist.type.toLowerCase().includes(filter.toLowerCase()) || 
@@ -54,7 +58,7 @@ const BookingGrid = () => {
             <ul className='grid__list'>
                 {filteredArtists.map((artist) => {
                     return (
-                        <Link to={`/booking/${artist.id}`}  className='grid__link' key={artist.id}>
+                        <Link to={`/booking/${artist.id}`} onClick={handleClick} className='grid__link' key={artist.id}>
                             <li className='grid__item'>
                                 <div className='grid__div'>
                                     <h2 className='grid__name'>{artist.name}</h2>
