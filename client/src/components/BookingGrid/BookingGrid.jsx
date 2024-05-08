@@ -1,6 +1,7 @@
 import './BookingGrid.scss'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const BookingGrid = () => {
     const [artistsList, setArtistsList] = useState([])
@@ -40,13 +41,15 @@ const BookingGrid = () => {
             <ul className='grid__list'>
                 {filteredArtists.map((artist) => {
                     return (
-                        <li className='grid__item' key={artist.id}>
-                            <div className='grid__div'>
-                                <h2 className='grid__name'>{artist.name}</h2>
-                                <p>{artist.type}</p>
-                            </div>
-                            <p className='grid__par'>{artist.music_styles}</p>
-                        </li>
+                        <Link to={`/booking/${artist.id}`}  className='grid__link'>
+                            <li className='grid__item' key={artist.id}>
+                                <div className='grid__div'>
+                                    <h2 className='grid__name'>{artist.name}</h2>
+                                    <p className='grid__par'>{artist.type}</p>
+                                </div>
+                                <p className='grid__par'>{artist.music_styles}</p>
+                            </li>
+                        </Link>
                     )
                 })} 
             </ul>

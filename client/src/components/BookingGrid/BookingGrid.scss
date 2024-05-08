@@ -8,6 +8,10 @@
     padding: 1rem;
     gap: 1rem;
 
+    &__link {
+        text-decoration: none;
+    }
+
     &__input {
         border-radius: 10px;
         border: none;
