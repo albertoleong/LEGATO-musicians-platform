@@ -4,6 +4,7 @@ import knex from 'knex';
 import knexfile from '../knexfile.js';
 const db = knex(knexfile.development);
 
+
 router.route('/')
     .get(async (req, res) => {
         try {
