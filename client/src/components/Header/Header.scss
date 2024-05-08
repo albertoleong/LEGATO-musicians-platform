@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    border-bottom: 1px solid $accent;
+    border-bottom: 1px solid $text-main;
 
     @include tablet {
         padding-left: 3rem;
