@@ -1,6 +1,7 @@
 import './ArtistBooking.scss'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import image from '../../assets/images/fender.jpg'
 
 const ArtistBooking = ({ artistId }) => {
     const [selectedArtist, setSelectedArtist] = useState(null)
@@ -33,13 +34,18 @@ const ArtistBooking = ({ artistId }) => {
 
     return (
         <section className='profile'>
-            <img alt='artist performing' className='profile__image'/>
-            <div className='profile__container'>
-                <h2 className='profile__name'>{selectedArtist.name}</h2>
-                <p className='profile__description'>{selectedArtist.description}</p>
-            </div>
-            <div className='profile__contact'>
-                <p className='profile__email'>{selectedArtist.email}</p>
+            <h2 className='profile__name'>{selectedArtist.name}</h2>
+            <div className='profile__box'>
+                <img src={image} alt='artist performing' className='profile__image'/>
+                <div className='profile__divider'>
+                    <div className='profile__info'>
+                        <p className='profile__description'>{selectedArtist.description}</p>
+                    </div>
+                    <div className='profile__contact'>
+                        <p className='profile__reach'>Contact artist:</p>
+                        <p className='profile__email'>{selectedArtist.email}</p>
+                    </div>
+                </div>
             </div>
         </section>
     )
