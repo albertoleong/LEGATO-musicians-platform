@@ -1,3 +1,15 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
+.booking {
+    background-color: $primary2;
+
+    &__title {
+        padding-left: 1rem;
+        padding-top: 1rem;
+        color: $text1;
+        font-weight: 600;
+        font-size: 2rem;
+        text-align: center;
+    }
+}

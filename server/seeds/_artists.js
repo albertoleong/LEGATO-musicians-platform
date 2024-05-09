@@ -13,7 +13,7 @@ export async function seed(knex)  {
       music_styles: 'indie, pop, blues, rock, singer-songwriter',
       instruments: "guitar",
       location: "Columbus, OH",
-      description: "Alberto Leong is a solo singer-songwriter known for his versatility as an electric guitar player. With a repertoire spanning indie, pop, blues, and rock, Alberto is ready for any gig.', 'alberto@example.com",
+      description: "Alberto Leong is a solo singer-songwriter known for his versatility as an electric guitar player. With a repertoire spanning indie, pop, blues, and rock, Alberto is ready for any gig.",
       email: "alberto@example.com"
     },
     {
