@@ -14,9 +14,9 @@ const Header = () => {
                 <h2 className='header__title'>Legato</h2>
             </Link>
             <div className='header__nav'>
-                <div className='header__link'>
+                <Link to='/sign-up' className='header__link'>
                     <button className='header__button'>Sign Up</button>
-                </div>
+                </Link>
                 <HamburgerMenu />
             </div>
         </section>
