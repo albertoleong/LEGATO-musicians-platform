@@ -1,2 +1,21 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
+
+.signUp {
+    display: flex;
+    flex-direction: column;
+
+
+    &__title {
+        padding: 1rem;
+        font-size: 2rem;
+        color: $text-main;
+        @include tablet {
+            padding-left: 2rem;
+            
+        }
+        @include desktop {
+            padding-left: 3.5rem;
+        }
+    }
+}
