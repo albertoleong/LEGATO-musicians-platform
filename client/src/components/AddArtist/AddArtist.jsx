@@ -38,7 +38,7 @@ const AddArtist = () => {
         <form onSubmit={handleSubmit} className='form'>
             <div className='form__container'>
                 <section className='form__login'>
-                    <label className='form__label'>Your email and username</label>
+                    <label className='form__label'>Your email & Username</label>
                     <input className='form__input' type="email" name="email" 
                         placeholder="Email" value={formData.email} onChange={handleChange} />
                     <br></br>

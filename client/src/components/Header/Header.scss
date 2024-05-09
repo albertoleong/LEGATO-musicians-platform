@@ -9,8 +9,12 @@
     border-bottom: 1px solid $text-main;
 
     @include tablet {
-        padding-left: 3rem;
-        padding-right: 3rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    @include desktop {
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
     }
 
     &__logo {
