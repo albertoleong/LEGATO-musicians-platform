@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './HamburgerMenu.scss'; 
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../AuthContext';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isLoggedIn } = useAuth()
+
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -19,7 +22,9 @@ const HamburgerMenu = () => {
       <ul className={`menu ${isOpen ? 'open' : ''}`}>
         <li className='menu__item'>About</li>
         <Link to='/login' className='menu__item'>Log in</Link>
-        <li className='menu__item'>FAQ</li>
+        {isLoggedIn && (
+          <Link to='/profile' className='menu__item'>My Profile</Link>
+        )}
         <li className='menu__item'>Contact Us</li>
       </ul>
     </div>

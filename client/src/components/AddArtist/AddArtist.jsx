@@ -52,7 +52,7 @@ const AddArtist = () => {
                     <br></br>
                     <label className='form__label'>Choose your password:</label>
                     <input className='form__input form__input--pass' placeholder='Your Password' 
-                        value={password} type='password' onChange={handleChange}>
+                        value={password} type='password' onChange={handleChange} name='password'>
                     </input>
                     <input className='form__input' placeholder='Confirm Password'></input>
                 </section>
