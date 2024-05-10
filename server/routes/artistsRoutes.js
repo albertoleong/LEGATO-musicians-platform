@@ -81,7 +81,41 @@ router.route('/login')
     });
 
 
-router.route('/:id')
+    router.route('/account')
+    .get(async (req, res) => {
+
+        if (!req.headers.authorization) {
+            return res.status(401).send("Please login")
+        }
+
+        const token = req.headers.authorization.split(' ')[1]
+
+        try {
+            const decodedToken = jwt.verify(token, process.env.JWT_KEY) 
+            const userId = decodedToken.id; 
+
+            const artist = await db('artists').where({ id: userId }).first()
+            
+            if (!artist) {
+                return res.status(404).json({ error: 'Artist not found' })
+            }
+            
+            res.json({
+                id: artist.id,
+                name: artist.name,
+                type: artist.type,
+                music_styles: artist.music_styles,
+                instruments: artist.instruments,
+                location: artist.location,
+                description: artist.description,
+                email: artist.email
+            });
+        } catch(err) {
+            res.status(404).json({ message: err.message })
+        }
+    })
+
+    router.route('/:id')
     .get(async (req, res) => {
         const { id } = req.params;
         try {
@@ -105,39 +139,42 @@ router.route('/:id')
         }
     })
 
-    .patch(async (req, res) => {
-        const { id } = req.params;
-        const {
-            name,
-            type,
-            music_styles,
-            instruments,
-            location,
-            description,
-            email
-        } = req.body;
-        try {
-            const updatedArtist = await db('artists')
-                .where({ id })
-                .update({
-                    name,
-                    type,
-                    music_styles,
-                    instruments,
-                    location,
-                    description,
-                    email
-                });
+
+    // .patch(async (req, res) => {
+    //     const { id } = req.params;
+    //     const {
+    //         name,
+    //         type,
+    //         music_styles,
+    //         instruments,
+    //         location,
+    //         description,
+    //         email
+    //     } = req.body;
+    //     try {
+    //         const updatedArtist = await db('artists')
+    //             .where({ id })
+    //             .update({
+    //                 name,
+    //                 type,
+    //                 music_styles,
+    //                 instruments,
+    //                 location,
+    //                 description,
+    //                 email
+    //             });
     
-            if (!updatedArtist) {
-                return res.status(404).json({ error: 'Artist not found' });
-            }
+    //         if (!updatedArtist) {
+    //             return res.status(404).json({ error: 'Artist not found' });
+    //         }
     
-            res.json({ message: 'Artist updated successfully' });
-        } catch (err) {
-            res.status(500).json({ error: 'Failed to update artist' });
-        }
-    });
+    //         res.json({ message: 'Artist updated successfully' });
+    //     } catch (err) {
+    //         res.status(500).json({ error: 'Failed to update artist' });
+    //     }
+    // });
     
 
 export default router
+
+

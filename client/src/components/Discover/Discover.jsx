@@ -17,11 +17,6 @@ const Discover = () => {
         setIsModalOpen(false);
     };
 
-    const handleOptionSelection = (option) => {
-        console.log("Selected option:", option);
-        closeModal();
-    };
-
 
     return (
         <section className='discover'>
@@ -52,9 +47,9 @@ const Discover = () => {
                     "Whether you're planning a wedding, corporate event, or private party, 
                     Legato's diverse selection of musicians will suit your preferences." - Hannah J
                 </p>
-                <Link className='discover__link--tablet'>
-                <button className='discover__button'>Sign Up Today!</button>
-            </Link>
+                <Link to='/sign-up' className='discover__link--tablet'>
+                    <button className='discover__button'>Sign Up Today!</button>
+                </Link>
             </div>
             <img src={pianoGirl} className='discover__image' alt='girl playing the piano'/>
             <p className='discover__par discover__par--bottom'>
@@ -68,7 +63,6 @@ const Discover = () => {
                 <ModalSignUp
                     isOpen={isModalOpen}
                     closeModal={closeModal}
-                    handleOptionSelection={handleOptionSelection}
                 />
             )}
         </section>

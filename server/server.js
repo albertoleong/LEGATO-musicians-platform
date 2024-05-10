@@ -13,7 +13,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/', artistRouter);
-//app.use('/', inventoriesRouter);
 
 const PORT = process.env.PORT || 8080;
 
