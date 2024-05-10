@@ -26,6 +26,12 @@
             color: $text-main;
             
         }
+        &__link {
+            width: 100%;
+            display: flex;
+            text-decoration: none;
+            justify-content: center;
+        }
         &__loginButton {
             background-color: $primary2;
             border: none;

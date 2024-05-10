@@ -3,8 +3,9 @@ const router = express.Router()
 import knex from 'knex';
 import knexfile from '../knexfile.js';
 const db = knex(knexfile.development);
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+
 
 router.route('/')
     .get(async (req, res) => {
@@ -23,13 +24,16 @@ router.route('/')
             instruments,
             location,
             description,
-            email
+            email,
+            password
         } = req.body;
-        if (!name || !type || !music_styles || !instruments || !location || !description || !email ) 
-        {return res.status(400).json({ error: 'Missing required fields in request, please check' })}
-        
-        const hashedPassword = bcrypt.hashSync(password);
+
+        if (!name || !type || !music_styles || !instruments || !location || !description || !email) {
+            return res.status(400).json({ error: 'Missing required fields in request, please check' });
+        }
+
         try {
+            const hashedPassword = bcrypt.hashSync(password, 10);
             const [newArtistId] = await db('artists').insert({
                 name,
                 type,
@@ -38,15 +42,17 @@ router.route('/')
                 location,
                 description,
                 email,
-                password:hashedPassword
+                password: hashedPassword
             });
+
             const newArtist = await db('artists').where({ id: newArtistId }).first();
             return res.status(201).json(newArtist);
         } catch (error) {
             console.error('Error creating new artist:', error);
             return res.status(500).json({ error: 'Error' });
-        }        
+        }
     })
+
 
 router.route('/login')
     .post(async (req, res) => {

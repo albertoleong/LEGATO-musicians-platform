@@ -23,6 +23,7 @@
         justify-content: space-evenly;
     }
     &__square {
+        background-color: $primary;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -40,7 +41,7 @@
         }
         &__p {
             text-align: center;
-            color: $text-main;
+            color: $text1;
         }
         &__par {
             display: none;

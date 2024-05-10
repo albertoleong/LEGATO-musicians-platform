@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './HamburgerMenu.scss'; 
+import { Link } from 'react-router-dom';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,7 @@ const HamburgerMenu = () => {
       </div>
       <ul className={`menu ${isOpen ? 'open' : ''}`}>
         <li className='menu__item'>About</li>
-        <li className='menu__item'>Log in</li>
+        <Link to='/login' className='menu__item'>Log in</Link>
         <li className='menu__item'>FAQ</li>
         <li className='menu__item'>Contact Us</li>
       </ul>

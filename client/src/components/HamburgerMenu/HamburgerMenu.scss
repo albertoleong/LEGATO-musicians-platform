@@ -46,6 +46,8 @@
 
 .menu__item {
   padding-bottom: .25rem;
+  text-decoration: none;
+  color: $text1;
 }
 .menu__item:hover {
   background-color: $bg3;

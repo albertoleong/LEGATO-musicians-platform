@@ -13,37 +13,47 @@ const AddArtist = () => {
         email: ''
     });
 
+    const [password, setPassword] = useState('')
+
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+        if (name === 'password') {
+            setPassword(value);
+        } else {
+            setFormData(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8080/", formData);
+            const response = await axios.post("http://localhost:8080/", {
+                ...formData,
+                password: password 
+            });
             console.log('New artist added:', response.data);
-            alert("Tnak you for joining our platform!")
-
+            alert("Thank you for joining our platform!");
         } catch (error) {
             console.error('Error adding new artist:', error);
-            alert('Failed to add artist')
+            alert('Failed to add artist');
         }
     };
 
     return (
         <form onSubmit={handleSubmit} className='form'>
             <div className='form__container'>
-                <section className='form__login'>
-                    <label className='form__label'>Your email & Username</label>
-                    <input className='form__input' type="email" name="email" 
+                 <section className='form__login'>
+                     <label className='form__label'>Your email & Username</label>
+                     <input className='form__input' type="email" name="email" 
                         placeholder="Email" value={formData.email} onChange={handleChange} />
                     <br></br>
                     <label className='form__label'>Choose your password:</label>
-                    <input className='form__input' placeholder='Your Password'></input>
+                    <input className='form__input form__input--pass' placeholder='Your Password' 
+                        value={password} type='password' onChange={handleChange}>
+                    </input>
                     <input className='form__input' placeholder='Confirm Password'></input>
                 </section>
                 <section className='form__artistInfo'>
@@ -63,8 +73,6 @@ const AddArtist = () => {
                     </select>
                     <textarea className='form__text' type="text" name="description" placeholder="Description" 
                         value={formData.description} onChange={handleChange} />
-                    {/* <input className='form__input' type="email" name="email" 
-                        placeholder="Email" value={formData.email} onChange={handleChange} /> */}
                 </section>
             </div>
             <button className='form__submit' type="submit">Submit</button> 
@@ -73,4 +81,3 @@ const AddArtist = () => {
 };
 
 export default AddArtist;
-
