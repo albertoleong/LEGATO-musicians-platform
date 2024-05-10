@@ -8,7 +8,7 @@ const BookingGrid = () => {
     const [filter, setFilter] = useState('');
     const [locationFilter, setLocationFilter] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 6;
+    const itemsPerPage = 9;
     const API_URL = "http://localhost:8080/";
 
     useEffect(() => {

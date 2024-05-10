@@ -1,7 +1,7 @@
 import './ArtistBooking.scss'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import image from '../../assets/images/fender.jpg'
+import image from '../../assets/images/acoustic.jpg'
 import { useNavigate } from 'react-router-dom'
 
 const ArtistBooking = ({ artistId }) => {
@@ -48,7 +48,9 @@ const ArtistBooking = ({ artistId }) => {
         <section className='profile'>
             <h2 className='profile__name'>{selectedArtist.name}</h2>
             <div className='profile__box'>
-                <img src={image} alt='artist performing' className='profile__image'/>
+                {image ? (<img src={image} alt='artist performing' className='profile__image'/>) : (
+                    <div>Loading </div>
+                ) }
                 <div className='profile__divider'>
                     <div className='profile__info'>
                         <p className='profile__description'>{selectedArtist.description}</p>

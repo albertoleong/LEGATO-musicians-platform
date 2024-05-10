@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../AuthContext';
 import './Header.scss';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
-import logo from '../../assets/icons/logo1.png';
+import logo from '../../assets/icons/logo2.png';
 import loggedInImage from '../../assets/images/piano-girl.jpg';
 
 const Header = () => {
