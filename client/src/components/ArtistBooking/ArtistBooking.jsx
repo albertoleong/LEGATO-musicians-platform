@@ -9,8 +9,7 @@ const ArtistBooking = ({ artistId }) => {
     const [selectedArtist, setSelectedArtist] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-    const API_URL = "http://localhost:8080/"
-    //const API_URL = process.env.REACT_APP_API_URL
+    const API_URL = "http://localhost:8080/artists/"
 
     useEffect(() => {
         const getTheArtist = async () => {

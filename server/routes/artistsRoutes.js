@@ -114,8 +114,47 @@ router.route('/login')
             res.status(404).json({ message: err.message })
         }
     })
+    .patch(async (req, res) => {
+        if (!req.headers.authorization) {
+            return res.status(401).send("Please login")
+        }
+        const token = req.headers.authorization.split(' ')[1]
+        try {
+            const decodedToken = jwt.verify(token, process.env.JWT_KEY) 
+            const userId = decodedToken.id;
+            const artist = await db('artists').where({ id: userId }).first()
+        
+            if (!artist) {
+                return res.status(404).json({ error: 'Artist not found' })
+            }
+            const updatedArtist = await db('artists')
+                .where({ id: userId })
+                .update({
+                    name: req.body.name || artist.name,
+                    type: req.body.type || artist.type,
+                    music_styles: req.body.music_styles || artist.music_styles,
+                    instruments: req.body.instruments || artist.instruments,
+                    location: req.body.location || artist.location,
+                    description: req.body.description || artist.description,
+                    email: req.body.email || artist.email
+                })
+            res.json({
+                id: userId,
+                name: req.body.name || artist.name,
+                type: req.body.type || artist.type,
+                music_styles: req.body.music_styles || artist.music_styles,
+                instruments: req.body.instruments || artist.instruments,
+                location: req.body.location || artist.location,
+                description: req.body.description || artist.description,
+                email: req.body.email || artist.email
+            });
+        } catch(err) {
+            res.status(404).json({ message: err.message })
+        }
+    })
 
-    router.route('/:id')
+
+    router.route('/artists/:id')
     .get(async (req, res) => {
         const { id } = req.params;
         try {
@@ -138,42 +177,6 @@ router.route('/login')
             res.status(404).json({message:err})
         }
     })
-
-
-    // .patch(async (req, res) => {
-    //     const { id } = req.params;
-    //     const {
-    //         name,
-    //         type,
-    //         music_styles,
-    //         instruments,
-    //         location,
-    //         description,
-    //         email
-    //     } = req.body;
-    //     try {
-    //         const updatedArtist = await db('artists')
-    //             .where({ id })
-    //             .update({
-    //                 name,
-    //                 type,
-    //                 music_styles,
-    //                 instruments,
-    //                 location,
-    //                 description,
-    //                 email
-    //             });
-    
-    //         if (!updatedArtist) {
-    //             return res.status(404).json({ error: 'Artist not found' });
-    //         }
-    
-    //         res.json({ message: 'Artist updated successfully' });
-    //     } catch (err) {
-    //         res.status(500).json({ error: 'Failed to update artist' });
-    //     }
-    // });
-    
 
 export default router
 

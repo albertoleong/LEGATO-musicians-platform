@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../AuthContext';
 import artist from '../../assets/images/nate.jpeg'
+import EditProfile from '../../components/EditProfile/EditProfile';
 
 const Profile = () => {
-    const { isLoggedIn } = useAuth();
-    const [userData, setUserData] = useState(null);
+    const { isLoggedIn } = useAuth()
+    const [userData, setUserData] = useState(null)
+    const [showModal, setShowModal] = useState(false)
 
     const fetchUserData = async () => {
         try {
@@ -27,6 +29,29 @@ const Profile = () => {
             fetchUserData();
         }
     }, [isLoggedIn]);
+
+
+    const handleEditProfile = () => {
+        setShowModal(true);
+    };
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+    const handleProfileUpdate = async (updatedData) => {
+        
+        try {
+            const token = sessionStorage.getItem('token');
+            await axios.patch('http://localhost:8080/account', updatedData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            fetchUserData();
+            setShowModal(false); 
+        } catch (error) {
+            console.error('Error updating profile:', error);
+        }
+    };
 
     return (
         <main className='account'>
@@ -56,7 +81,10 @@ const Profile = () => {
                         <label>Description:</label>
                         <p className='account__info'>{userData.description}</p>
                     </div>
-                    <button className='account__button account__button--hidden'>Edit Profile</button>
+                    <button onClick={handleEditProfile} 
+                        className='account__button account__button--hidden'>
+                            Edit Profile
+                    </button>
                 </div>
                 )}
             </section>
@@ -66,7 +94,14 @@ const Profile = () => {
                     <p className='account__info'>{userData.description}</p>
                 </div>
             )}
-            <button className='account__button'>Edit Profile</button>
+            <button onClick={handleEditProfile} className='account__button'>Edit Profile</button>
+            {showModal && (
+                <EditProfile
+                    artist={userData}
+                    onClose={handleCloseModal}
+                    onUpdate={handleProfileUpdate}
+                />
+            )}
         </main>
     )
 }
