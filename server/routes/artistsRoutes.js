@@ -152,6 +152,26 @@ router.route('/login')
             res.status(404).json({ message: err.message })
         }
     })
+    .delete(async (req, res) => {
+        if (!req.headers.authorization) {
+            return res.status(401).send("Please login")
+        }
+        const token = req.headers.authorization.split(' ')[1]
+        try {
+            const decodedToken = jwt.verify(token, process.env.JWT_KEY) 
+            const userId = decodedToken.id;
+            const artist = await db('artists').where({ id: userId }).first()
+        
+            if (!artist) {
+                return res.status(404).json({ error: 'Artist not found' })
+            }
+            await db('artists').where({ id: userId }).del();
+            res.status(204).send(); 
+        } catch(err) {
+            res.status(404).json({ message: err.message })
+        }
+    })
+
 
 
     router.route('/artists/:id')

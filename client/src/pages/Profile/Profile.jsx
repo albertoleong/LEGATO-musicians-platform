@@ -4,11 +4,13 @@ import axios from 'axios';
 import { useAuth } from '../../AuthContext';
 import artist from '../../assets/images/nate.jpeg'
 import EditProfile from '../../components/EditProfile/EditProfile';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
     const { isLoggedIn } = useAuth()
     const [userData, setUserData] = useState(null)
     const [showModal, setShowModal] = useState(false)
+    const navigate = useNavigate()
 
     const fetchUserData = async () => {
         try {
@@ -53,6 +55,20 @@ const Profile = () => {
         }
     };
 
+    const handleDeleteAccount = async () => {
+        try {
+            const token = sessionStorage.getItem('token');
+            await axios.delete('http://localhost:8080/account', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            navigate('/')
+        } catch (error) {
+            console.error('Error deleting account:', error);
+        }
+    };
+
     return (
         <main className='account'>
             {userData ? (
@@ -77,14 +93,21 @@ const Profile = () => {
                         <label>Genres:</label>
                         <p className='account__info'>{userData.music_styles}</p>
                     </div>
+                    <div>
+                        <label>Instruments:</label>
+                        <p className='account__info'>{userData.instruments}</p>
+                    </div>
                     <div className='account__hidden'>
                         <label>Description:</label>
                         <p className='account__info'>{userData.description}</p>
                     </div>
-                    <button onClick={handleEditProfile} 
-                        className='account__button account__button--hidden'>
+                    <div className='account__buttons'>
+                        <button onClick={handleEditProfile} 
+                            className='account__button account__button--hidden'>
                             Edit Profile
-                    </button>
+                        </button>
+                        <button onClick={handleDeleteAccount} className='account__button account__button--hidden account__button--delete'>Delete account</button>
+                    </div>
                 </div>
                 )}
             </section>
@@ -94,7 +117,10 @@ const Profile = () => {
                     <p className='account__info'>{userData.description}</p>
                 </div>
             )}
-            <button onClick={handleEditProfile} className='account__button'>Edit Profile</button>
+            <div className='account__buttons'>
+                <button onClick={handleEditProfile} className='account__button'>Edit Profile</button>
+                <button onClick={handleDeleteAccount} className='account__button account__button--delete'>Delete account</button>
+            </div>
             {showModal && (
                 <EditProfile
                     artist={userData}
@@ -102,6 +128,7 @@ const Profile = () => {
                     onUpdate={handleProfileUpdate}
                 />
             )}
+            
         </main>
     )
 }

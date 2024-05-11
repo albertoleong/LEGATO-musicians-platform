@@ -19,15 +19,17 @@
   &__logo img {
     width: 4rem; 
   }
-  
-  &__social-links a {
-    color: $text1;
-    margin-right: 10px;
+  &__links {
+    display: flex;
   }
-  
-  &__links a {
+  &__link {
     color: $text1;
     margin-right: 20px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  &__link:hover {
+    color: $primary;
   }
 }
   

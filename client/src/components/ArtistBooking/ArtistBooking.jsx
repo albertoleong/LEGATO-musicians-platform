@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import image from '../../assets/images/acoustic.jpg'
 import { useNavigate } from 'react-router-dom'
+import ig from '../../assets/icons/ig.png'
+import youtube from '../../assets/icons/tube.png'
 
 const ArtistBooking = ({ artistId }) => {
     const navigate = useNavigate()
@@ -54,10 +56,18 @@ const ArtistBooking = ({ artistId }) => {
                     <div className='profile__info'>
                         <p className='profile__description'>{selectedArtist.description}</p>
                     </div>
+                    <div className='profile__socials'>
+                        <p className='profile__socialTitle'>Listen below:</p>
+                            <div>
+                                <img src={ig} className='profile__icon' alt='instagram'/>
+                                <img src={youtube} className='profile__icon' alt='youtube'/>
+                            </div>
+                    </div>
                     <div className='profile__contact'>
                         <p className='profile__reach'>Send an inquiry:</p>
                         <form className='profile__form' onSubmit={handleSubmit} >
                             <input className='profile__input' placeholder='Your Email'></input>
+                            <input className='profile__input' placeholder='Date of your event'></input>
                             <textarea className='profile__inquiry' placeholder='Describe your event'></textarea>
                             <button type='submit' className='profile__submit'>Submit</button>
                         </form>
