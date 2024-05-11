@@ -21,7 +21,6 @@ const Login = () => {
             sessionStorage.setItem('token', token)
             console.log('Token stored in sessionStorage:', token)
             login();
-            alert('Welcome back!')
             navigate('/profile')
         } catch (err) {
             setError(err.response.data);

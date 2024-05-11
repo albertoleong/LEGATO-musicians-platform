@@ -3,7 +3,7 @@ import { useAuth } from '../../AuthContext';
 import './Header.scss';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import logo from '../../assets/icons/logo2.png';
-import loggedInImage from '../../assets/images/piano-girl.jpg';
+import loggedInImage from '../../assets/images/nate.jpeg';
 
 const Header = () => {
     const { isLoggedIn, logout } = useAuth()
