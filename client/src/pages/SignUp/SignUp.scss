@@ -4,7 +4,9 @@
 .signUp {
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    @include desktop {
+        height: 80vh;
+    }
 
     &__login {
         display: flex;

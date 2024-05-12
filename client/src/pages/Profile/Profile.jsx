@@ -4,12 +4,14 @@ import axios from 'axios';
 import { useAuth } from '../../AuthContext';
 import artist from '../../assets/images/nate.jpeg'
 import EditProfile from '../../components/EditProfile/EditProfile';
+import DeleteModal from '../../components/DeleteModal/DeleteModal';
 import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
     const { isLoggedIn } = useAuth()
     const [userData, setUserData] = useState(null)
     const [showModal, setShowModal] = useState(false)
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
     const navigate = useNavigate()
 
     const fetchUserData = async () => {
@@ -39,6 +41,14 @@ const Profile = () => {
     const handleCloseModal = () => {
         setShowModal(false);
     };
+
+    const handleDeleteModal = () => {
+        setShowDeleteModal(true);
+    };
+    const handleCloseDeleteModal = () => {
+        setShowDeleteModal(false);
+    };
+
     const handleProfileUpdate = async (updatedData) => {
         
         try {
@@ -63,6 +73,7 @@ const Profile = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
+            alert('Your account has been deleted. We are sorry to see you go!')
             navigate('/')
         } catch (error) {
             console.error('Error deleting account:', error);
@@ -106,7 +117,7 @@ const Profile = () => {
                             className='account__button account__button--hidden'>
                             Edit Profile
                         </button>
-                        <button onClick={handleDeleteAccount} className='account__button account__button--hidden account__button--delete'>Delete account</button>
+                        <button onClick={handleDeleteModal} className='account__button account__button--hidden account__button--delete'>Delete account</button>
                     </div>
                 </div>
                 )}
@@ -119,7 +130,7 @@ const Profile = () => {
             )}
             <div className='account__buttons'>
                 <button onClick={handleEditProfile} className='account__button'>Edit Profile</button>
-                <button onClick={handleDeleteAccount} className='account__button account__button--delete'>Delete account</button>
+                <button onClick={handleDeleteModal} className='account__button account__button--delete'>Delete account</button>
             </div>
             {showModal && (
                 <EditProfile
@@ -128,7 +139,13 @@ const Profile = () => {
                     onUpdate={handleProfileUpdate}
                 />
             )}
-            
+            {showDeleteModal && (
+                <DeleteModal
+                    artist={userData}
+                    onDelete={handleDeleteAccount}
+                    onClose={handleCloseDeleteModal}
+                />
+            )}
         </main>
     )
 }
