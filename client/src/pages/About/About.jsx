@@ -23,7 +23,6 @@ const About = () => {
                     </li>
                     <li className="about__description">Seamless Booking Experience</li>
                     <li className="about__description">Verified Musicians for Quality Assurance</li>
-                    <li className="about__description">24/7 Customer Support</li>
                 </ul>
             </section>
 

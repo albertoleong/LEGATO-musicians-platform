@@ -1,5 +1,6 @@
 import './Footer.scss'
 import logo from '../../assets/icons/logo2.png';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
             <h2 className='footer__title'>Legato</h2>
         </div>
         <div className="footer__links">
-          <p className='footer__link'>About Us</p>
+          <Link to='/about' className='footer__link'>About Us</Link>
           <p className='footer__link'>Contact Us</p>
         </div>
         <div className="footer__logo">
