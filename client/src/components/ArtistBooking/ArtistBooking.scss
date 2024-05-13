@@ -42,7 +42,8 @@
             border-radius: 5px;
 
             @include tablet {
-                width: 60%;
+                width: 50%;
+                height: fit-content;
             }
             @include desktop {
                 width: 50%;
