@@ -26,13 +26,11 @@ This is where Gig Grid comes in. By providing a convenient and centralized marke
 Event Organizer:
 - As a user, I want to be able to find musicians to perform at my event
 - As a user, I want to be able to read a description of each performer and even hear their work when possible
-- As a user, I want to be able to contact the performer after booking
-- As a user, I want to be able to leave a review
+- As a user, I want to be able to contact the performer for booking
 
 Musician:
-- As a user, I want to be able to create an account and manage my schedule and profile
-- As a user, I want to be able to login to my account and manage my gigs
-- As a logged in user, I want to be able to see all my past gigs.
+- As a user, I want to be able to create an account and manage my profile 
+- As a user, I want to be able to login to my account and manage my inquiries
 
 ## Implementation
 
@@ -40,15 +38,16 @@ Musician:
 
 - React
 - Node.js
-- MySQL
 - Express
 - Client libraries: 
     - react
     - react-router
     - axios
+    - authContext
 - Server libraries:
     - knex
     - express
+- MySQL
     
 
 ### APIs
@@ -69,12 +68,9 @@ Musician:
 ![](mobile.png)
 ![](desktop.png)
 
-### Data
- 
-
 ### Endpoints
 
-**GET /performers**
+**GET /artists**
 
 - Get performers, an array of performers. Each performer should be an object with data.
 
@@ -97,7 +93,7 @@ Response:
     ...
 ]
 
-**GET /performers/:id**
+**GET /artists/:id**
 
 - Get performer by id
 
@@ -114,7 +110,7 @@ Response:
     "description": "We are the Bees Knees! A trio with guitar, bass and drums that specialices in jazz and rock music."
 }
 
-**post /performers**
+**post /artists**
 
 - Create a new performer 
 
@@ -136,7 +132,7 @@ Response:
     "description": "We are the Bees Knees! A trio with guitar, bass and drums that specialices in jazz and rock music."
 }
 
-**put /performers/id**
+**patch /artists/id**
 
 - Edit performer 
 
@@ -159,22 +155,7 @@ Response:
     "description": "We are the Bees Knees! A trio with guitar, bass and drums that specialices in jazz and rock music."
 }
 
-**POST /users/register**
-
-- Add a user account
-
-Parameters:
-
-- email: User's email
-- password: User's provided password
-
-Response:
-
-{
-    "token": "seyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6I..."
-}
-
-**POST /users/login**
+**POST /login**
 
 - Login a user
 
@@ -244,4 +225,3 @@ JWT
 - Location based functionality
 - Leaving reviews 
 - Messaging within the app
-- Payment within the app
