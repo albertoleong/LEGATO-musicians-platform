@@ -27,7 +27,7 @@ const EditProfile = ({ artist, onClose, onUpdate }) => {
     return (
         <section className='edit'>
             <div className="edit__container">
-                <span className="edit__close" onClick={onClose}>&times;</span>
+                <span className="edit__close" onClick={onClose}>x</span>
                 <h2 className='edit__title'>Edit Profile</h2>
                 <form onSubmit={handleSubmit} className='edit__form'>
                     <label className='edit__label'>Name:</label>

@@ -12,7 +12,7 @@ const Landing = () => {
                     <Link className='landing__link' to={'/booking'}>
                         <button className='landing__button'>Start Booking</button>
                     </Link>
-                    <Link className='landing__link'>
+                    <Link to='/about' className='landing__link'>
                         <button className='landing__button landing__button--white'>Learn More</button>
                     </Link>
                 </div>

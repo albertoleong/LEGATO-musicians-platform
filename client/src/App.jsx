@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp/SignUp';
 import Login from './pages/Login/Login';
 import Profile from './pages/Profile/Profile';
 import { AuthProvider } from './AuthContext';
+import About from './pages/About/About';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path='/Sign-up' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<Profile />}/>
+          <Route path='/about' element={<About />} />
         </Routes>
         <Footer />
       </AuthProvider>

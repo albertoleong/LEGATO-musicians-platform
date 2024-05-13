@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './HamburgerMenu.scss'; 
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../AuthContext';
@@ -20,12 +20,12 @@ const HamburgerMenu = () => {
         <div className="bar3"></div>
       </div>
       <ul className={`menu ${isOpen ? 'open' : ''}`}>
-        <li className='menu__item'>About</li>
+        <Link to='/about' className='menu__item'>About</Link>
         <Link to='/login' className='menu__item'>Log in</Link>
         {isLoggedIn && (
           <Link to='/profile' className='menu__item'>My Profile</Link>
         )}
-        <li className='menu__item'>Contact Us</li>
+        <Link to='/booking' className='menu__item'>Browse artists</Link>
       </ul>
     </div>
   );
