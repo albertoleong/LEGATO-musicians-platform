@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import artistRouter from './routes/artistsRoutes.js'
+import inquiriesRouter from './routes/inquiriesRoutes.js'
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/', artistRouter);
+app.use('/inquiries', inquiriesRouter)
 
 const PORT = process.env.PORT || 8080;
 

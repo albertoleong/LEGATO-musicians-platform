@@ -6,6 +6,7 @@ import artist from '../../assets/images/nate.jpeg'
 import EditProfile from '../../components/EditProfile/EditProfile';
 import DeleteModal from '../../components/DeleteModal/DeleteModal';
 import { useNavigate } from 'react-router-dom';
+import InquiriesComponent from '../../components/Inquiries/Inquiries';
 
 const Profile = () => {
     const { isLoggedIn } = useAuth()
@@ -145,6 +146,9 @@ const Profile = () => {
                     onDelete={handleDeleteAccount}
                     onClose={handleCloseDeleteModal}
                 />
+            )}
+            {userData && (
+                <InquiriesComponent artistId={userData.id}/>
             )}
         </main>
     )
