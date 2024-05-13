@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Inquiries.scss'
+import './Inquiries.scss';
 
 const InquiriesComponent = ({ artistId }) => {
   const [inquiries, setInquiries] = useState([]);
@@ -44,25 +44,26 @@ const InquiriesComponent = ({ artistId }) => {
       <h2 className='inquiries__title'>My recent inquiries:</h2>
       <ul className='inquiries__list'>
         {inquiries.map((inquiry) => {
-            const stamp = new Date(inquiry.date)
-            const actualDate = stamp.toLocaleDateString()
-            return (
+          const stamp = new Date(inquiry.date);
+          const actualDate = stamp.toLocaleDateString();
+          return (
             <li className='inquiries__item' key={inquiry.id}>
-                <div className='inquiries__div'>
-                    <label className='inquiries__label'>Contact:</label>
-                    <p className='inquiries__text'>{inquiry.email}</p>
-                </div>
-                <div className='inquiries__div'>
-                    <label className='inquiries__label'>Event Date:</label>
-                    <p className='inquiries__text'>{actualDate}</p>
-                </div>
-                <div className='inquiries__div'>
-                    <label className='inquiries__label'>Description:</label>
-                    <p className='inquiries__text'>{inquiry.description}</p>
-                </div>
-                <button onClick={() => handleDelete(inquiry.id)} className='inquiries__button'>DONE</button>
+              <div className='inquiries__div'>
+                <label className='inquiries__label'>Contact:</label>
+                <p className='inquiries__text'>{inquiry.email}</p>
+              </div>
+              <div className='inquiries__div'>
+                <label className='inquiries__label'>Event Date:</label>
+                <p className='inquiries__text'>{actualDate}</p>
+              </div>
+              <div className='inquiries__div'>
+                <label className='inquiries__label'>Description:</label>
+                <p className='inquiries__text'>{inquiry.description}</p>
+              </div>
+              <button className='inquiries__button' onClick={() => handleDelete(inquiry.id)}>DONE</button>
             </li>
-            )})}
+          );
+        })}
       </ul>
     </section>
   );

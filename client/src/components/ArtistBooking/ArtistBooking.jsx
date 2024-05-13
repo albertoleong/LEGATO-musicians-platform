@@ -35,15 +35,25 @@ const ArtistBooking = ({ artistId }) => {
         return <div>Error: {error}</div>
     }
 
-    const handleSubmit = async(e) => {
-        e.preventDefault()
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const inquiryData = {
+            email: formData.get('email'),
+            date: formData.get('date'),
+            description: formData.get('description'),
+            artistId: selectedArtist.id
+        };
         try {
-            alert(`Thank you for your inquiry! ${selectedArtist.name} will be in touch soon.`)
-            navigate('/')
-        } catch (error){
-            console.error(error)
+            console.log(inquiryData)
+            await axios.post('http://localhost:8080/inquiries', inquiryData);
+            alert(`Thank you for your inquiry! ${selectedArtist.name} will be in touch soon.`);
+            navigate('/');
+        } catch (error) {
+            console.error('Error submitting inquiry:', error);
         }
-    }
+    };
+    
 
     return (
         <section className='profile'>
@@ -66,12 +76,11 @@ const ArtistBooking = ({ artistId }) => {
                     <div className='profile__contact'>
                         <p className='profile__reach'>Send an inquiry:</p>
                         <form className='profile__form' onSubmit={handleSubmit} >
-                            <input className='profile__input' placeholder='Your Email'></input>
-                            <input className='profile__input' placeholder='Date of your event'></input>
-                            <textarea className='profile__inquiry' placeholder='Describe your event'></textarea>
+                            <input name='email' className='profile__input' placeholder='Your Email'></input>
+                            <input name='date' className='profile__input' placeholder='Date of your event (year/month/day)'></input>
+                            <textarea name='description' className='profile__inquiry' placeholder='Describe your event'></textarea>
                             <button type='submit' className='profile__submit'>Submit</button>
                         </form>
-                        {/* <p className='profile__email'>{selectedArtist.email}</p> */}
                     </div>
                 </div>
             </div>
