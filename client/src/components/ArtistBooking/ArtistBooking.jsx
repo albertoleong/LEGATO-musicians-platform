@@ -65,6 +65,7 @@ const ArtistBooking = ({ artistId }) => {
                 <div className='profile__divider'>
                     <div className='profile__info'>
                         <p className='profile__description'>{selectedArtist.description}</p>
+                        <p className='profile__rate'>$50/Hour</p>
                     </div>
                     <div className='profile__socials'>
                         <p className='profile__socialTitle'>Listen below:</p>

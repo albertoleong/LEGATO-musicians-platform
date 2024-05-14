@@ -46,7 +46,7 @@
                 height: fit-content;
             }
             @include desktop {
-                width: 50%;
+                width: 58%;
             }
         }
         &__divider {
@@ -57,9 +57,14 @@
         &__info {
             align-self: flex-start;
             display: flex;
+            flex-direction: column;
+            gap: .5rem;
         }
             &__description {
                 color: $text1;
+            }
+            &__rate {
+                color: $red;
             }
         &__socials {
             display: flex;
