@@ -102,6 +102,10 @@ const Profile = () => {
                         <p className='account__info'>{userData.location}</p>
                     </div>
                     <div>
+                        <label>Rate:</label>
+                        <p className='account__info'>$25 an hour</p>
+                    </div>
+                    <div>
                         <label>Genres:</label>
                         <p className='account__info'>{userData.music_styles}</p>
                     </div>
