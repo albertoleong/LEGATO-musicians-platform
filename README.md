@@ -1,5 +1,3 @@
-# Project Title
-
 Legato
 
 ## Overview
