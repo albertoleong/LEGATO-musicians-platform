@@ -12,6 +12,7 @@ const ArtistBooking = ({ artistId }) => {
     const [selectedArtist, setSelectedArtist] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(false) 
     const API_URL = "http://localhost:8080/artists/"
 
     useEffect(() => {
@@ -48,13 +49,15 @@ const ArtistBooking = ({ artistId }) => {
         try {
             console.log(inquiryData)
             await axios.post('http://localhost:8080/inquiries', inquiryData);
-            alert(`Thank you for your inquiry! ${selectedArtist.name} will be in touch soon.`);
-            navigate('/');
+            setSuccess(true);  
+            setTimeout(() => {
+                setSuccess(false);  
+                navigate('/');
+            }, 3000);  
         } catch (error) {
             console.error('Error submitting inquiry:', error);
         }
     };
-    
 
     return (
         <section className='profile'>
@@ -77,10 +80,17 @@ const ArtistBooking = ({ artistId }) => {
                     </div>
                     <div className='profile__contact'>
                         <p className='profile__reach'>Send an inquiry:</p>
+                        {success && (
+                            <div className='profile__success'>
+                                <div className='profile__success__container'>
+                                    <p>Thank you for your inquiry! {selectedArtist.name} will be in touch soon.</p>
+                                </div>
+                            </div>
+                        )}
                         <form className='profile__form' onSubmit={handleSubmit} >
-                            <input name='email' className='profile__input' placeholder='Your Email'></input>
-                            <input name='date' className='profile__input' placeholder='Date of your event (year/month/day)'></input>
-                            <textarea name='description' className='profile__inquiry' placeholder='Describe your event'></textarea>
+                            <input name='email' className='profile__input' placeholder='Your Email' required></input>
+                            <input name='date' className='profile__input' placeholder='Date of your event (year/month/day)' required></input>
+                            <textarea name='description' className='profile__inquiry' placeholder='Describe your event' required></textarea>
                             <button type='submit' className='profile__submit'>Submit</button>
                         </form>
                     </div>
