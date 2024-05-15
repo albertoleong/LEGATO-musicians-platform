@@ -103,7 +103,7 @@ const Profile = () => {
                     </div>
                     <div>
                         <label>Rate:</label>
-                        <p className='account__info'>$25 / hour</p>
+                        <p className='account__info'>$50 / hour</p>
                     </div>
                     <div>
                         <label>Genres:</label>

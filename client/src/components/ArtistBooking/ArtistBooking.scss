@@ -38,21 +38,16 @@
         }
     }
         &__image {
-            width: 100%;
+            width: 35%;
             border-radius: 5px;
 
-            @include tablet {
-                width: 50%;
-                height: fit-content;
-            }
-            @include desktop {
-                width: 58%;
-            }
+        
         }
         &__divider {
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            margin: 2rem;
         }
         &__info {
             align-self: flex-start;

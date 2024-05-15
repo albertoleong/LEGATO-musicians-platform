@@ -5,6 +5,7 @@ import image from '../../assets/images/acoustic.jpg'
 import { useNavigate } from 'react-router-dom'
 import ig from '../../assets/icons/ig.png'
 import youtube from '../../assets/icons/tube.png'
+import nate from '../../assets/images/nate.jpeg'
 
 const ArtistBooking = ({ artistId }) => {
     const navigate = useNavigate()
@@ -59,7 +60,7 @@ const ArtistBooking = ({ artistId }) => {
         <section className='profile'>
             <h2 className='profile__name'>{selectedArtist.name}</h2>
             <div className='profile__box'>
-                {image ? (<img src={image} alt='artist performing' className='profile__image'/>) : (
+                {image ? (<img src={nate} alt='artist performing' className='profile__image'/>) : (
                     <div>Loading </div>
                 ) }
                 <div className='profile__divider'>
